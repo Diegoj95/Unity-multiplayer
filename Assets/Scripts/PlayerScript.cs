@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FishNet.Object;
 
 
-public class PlayerScript : NetworkBehaviour
+
+public class PlayerScript : MonoBehaviour
 {
     [SerializeField] float speed=3;
     float h, v;
@@ -23,7 +23,6 @@ public class PlayerScript : NetworkBehaviour
         Move();
     }
 
-    [Client(RequireOwnership = true)]
 
     void Move(){
         h = Input.GetAxis("Horizontal");
