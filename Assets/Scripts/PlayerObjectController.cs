@@ -28,7 +28,7 @@ public class PlayerObjectController : NetworkBehaviour
 
     public override void OnStartAuthority()
     {
-        CmdSetPlayerName(SteamFriends.GetPersonaName().ToString());
+        CmdSetPlayerName(SteamFriends.GetPersonaName());
         gameObject.name = "LocalGamePlayer";
         LobbyController.Instance.FindLocalPlayer();
         LobbyController.Instance.UpdateLobbyName();
@@ -48,9 +48,9 @@ public class PlayerObjectController : NetworkBehaviour
     }
 
     [Command]
-    private void CmdSetPlayerName(string name)
+    private void CmdSetPlayerName(string PlayeName)
     {
-        this.PlayerNameUpdate(this.PlayerName, PlayerName);
+        this.PlayerNameUpdate(this.PlayerName, PlayeName);
     }
 
     public void PlayerNameUpdate(string OldValue, string NewValue)
@@ -59,7 +59,7 @@ public class PlayerObjectController : NetworkBehaviour
         {
             this.PlayerName = NewValue;
         }
-        else if (isClient) //Client
+        if (isClient) //Client
         {
             LobbyController.Instance.UpdatePlayerList();
         }

@@ -64,4 +64,6 @@ public class PlayerListItem : MonoBehaviour
             PlayerIcon.texture = GetSteamImageAsTexture(callback.m_iImage);
         }
     }
+
+
 }
