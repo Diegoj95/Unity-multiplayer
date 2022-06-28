@@ -13,12 +13,31 @@ public class PlayerListItem : MonoBehaviour
 
     public Text PlayerNameText;
     public RawImage PlayerIcon;
+    public Text PlayerReadyText;
+    public bool Ready;
 
     protected Callback<AvatarImageLoaded_t> ImageLoaded;
+
+
+    public void ChangeReadyStatus()
+    {
+        if(Ready) //Ready
+        {
+            PlayerReadyText.text = "Ready";
+            PlayerReadyText.color = Color.green;
+        }
+        else  //Not Ready
+        {
+            PlayerReadyText.text = "Unready";
+            PlayerReadyText.color = Color.red;
+        }
+
+    }
 
     public void SetPlayerValues()
     {
         PlayerNameText.text = PlayerName;
+        ChangeReadyStatus();
         if (!AvatarReceived) { GetPlayerIcon(); }
     }
 
