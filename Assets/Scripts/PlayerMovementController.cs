@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovementController : NetworkBehaviour
 {
-    private RigidBody2D rb;
+    public Rigidbody2D rb;
     private float moveH, moveV;
     public GameObject PlayerModel;
     [SerializeField] private float moveSpeed = 1.0f;
@@ -18,13 +18,13 @@ public class PlayerMovementController : NetworkBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<RigidBody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
 
-        if(SceneManager.GetActiveScene().name = "Game")
+        if(SceneManager.GetActiveScene().name == "Game")
         {
             if(PlayerModel.activeSelf == false)
             {
